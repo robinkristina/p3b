@@ -27,26 +27,14 @@ public class MyProfiler<K extends Comparable<K>, V> {
       treemap = new TreeMap<K, V>();
     }
     
-    public void insert(K key, V value) {
-      try {
+    public void insert(K key, V value) throws IllegalNullKeyException, DuplicateKeyException{
         hashtable.insert(key, value);
         treemap.put(key, value);
-      } catch (IllegalNullKeyException e) {
-        e.printStackTrace();
-      } catch (DuplicateKeyException e) {
-        e.printStackTrace();
-      }
     }
     
-    public void retrieve(K key) {
-       try {
+    public void retrieve(K key) throws IllegalNullKeyException, KeyNotFoundException {
         hashtable.get(key);
         treemap.get(key);
-      } catch (IllegalNullKeyException e) {
-        e.printStackTrace();
-      } catch (KeyNotFoundException e) {
-        e.printStackTrace();
-      }
     }
     
     public static void main(String[] args) {
